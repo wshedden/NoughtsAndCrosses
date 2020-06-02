@@ -21,7 +21,6 @@ void display(char[][] board, float x, float y, float l) {
         c = 'X';
         colour = color(224, 29, 49);
       }
-      colour = turn % 2 == 1 ? color(224, 29, 49) : color(62, 94, 150);
       fill(colour);
       text(c, x+i*l/3+off, y+k*l/3+y_off);
     }
@@ -56,22 +55,22 @@ void move(char[][] board, char player, int x, int y) {
 }
 
 char getWinner(char[][] board, int turn) { //<>//
+  if(turn > 9) return 'E';
   boolean won = false;
   for (int i = 0; i < 3; i++) {
-    if (board[i][0] == board[i][1] && board[i][1] == board[i][2])
-      if (board[i][0] != ' ') won = true;
+    if (board[i][0] != ' ' && board[i][1] != ' ' && board[i][2] != ' ')
+      won = true;
   }
   for (int k = 0; k < 3; k++) {
-    if (board[0][k] == board[1][k] && board[1][k] == board[2][k])
-      if (board[0][k] != ' ') won = true;
+    if (board[0][k] != ' ' && board[1][k] != ' ' && board[2][k] != ' ')
+      won = true;
   }
-  if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != ' ') won = true;
-  if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != ' ') won = true;
+  if (board[0][0] != ' ' && board[1][1] != ' ' && board[2][2] != ' ') won = true;
+  if (board[0][2] != ' ' && board[1][1] != ' ' && board[2][0] != ' ') won = true;
   
   if(won){
      return turn % 2 == 0 ? 'O' : 'X'; 
   }
-  
   return 'N';
 }
 

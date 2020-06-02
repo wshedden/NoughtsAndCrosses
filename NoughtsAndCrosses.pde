@@ -42,10 +42,10 @@ void mousePressed() {
         success = playerMove(board, x, y, l);
         if (success) turn++;
       }
-      //if (turn <= 9 && success) {
-      //  botMove(board, 'O');
-      //  turn++;
-      //}
+      if (turn <= 9 && success && getWinner(board, turn) == 'N') {
+        botMove(board, 'O');
+        turn++;
+      }
     }
   } else if (mouseButton == RIGHT) {
     resetBoard(board);

@@ -3,6 +3,7 @@ void botMove(char[][] board, char player) {
   int[] play = result.move;
   move(board, player, play[0], play[1]);
 }
+
 class Result {
   int score;
   int[] move;
@@ -15,7 +16,7 @@ class Result {
 Result minimax(char[][] board, char player, int turn) {
   char winner = getWinner(board, turn);
   char player2 = player == 'X' ? 'O' : 'X';
-
+    
   if (winner == player) {
     return new Result(1, new int[0]) ;
   } else if (winner == 'D') {
@@ -23,7 +24,6 @@ Result minimax(char[][] board, char player, int turn) {
   } else if (winner == player2) {
     return new Result(-1, new int[0]) ;
   }
-
   ArrayList<int[]> moves = new ArrayList<int[]>();
   ArrayList<Integer> scores = new ArrayList<Integer>();
   for (int i = 0; i < 3; i++) {
